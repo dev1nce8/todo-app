@@ -1,0 +1,7 @@
+main {
+  padding: var(--container-padding);
+
+  & .active {
+    background-color: #ff0292;
+  }
+}

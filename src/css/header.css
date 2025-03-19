@@ -1,0 +1,5 @@
+header {
+  background-color: var(--clr-bg-secondary);
+  color: var(--clr-txt-light);
+  padding: var(--container-padding);
+}

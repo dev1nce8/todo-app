@@ -1,0 +1,8 @@
+:root {
+  --clr-bg-primary: #f6f5f5;
+  --clr-bg-secondary: #0c359e;
+
+  --clr-txt-light: #f6f5f5;
+
+  --container-padding: 0.5rem 1rem;
+}
