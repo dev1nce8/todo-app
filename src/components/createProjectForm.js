@@ -3,10 +3,10 @@ import PubSub, { events } from "../helpers/PubSub";
 
 export default function createProjectForm() {
   const form = document.querySelector("#create-project-form");
-  const button = document.querySelector("#create-project-btn");
+  const toggleButton = document.querySelector("#create-project-button");
   const nameInput = document.querySelector("#project-name-input");
   const submitButton = document.querySelector("#project-submit-button");
-  button.addEventListener("click", () => {
+  toggleButton.addEventListener("click", () => {
     form.classList.toggle("hidden");
   });
 
@@ -16,5 +16,7 @@ export default function createProjectForm() {
     if (nameValue.length === 0) return;
     LIBRARY.createProject(nameValue);
     PubSub.publish(events.projectUpdate);
+    nameInput.value = "";
+    form.classList.add("hidden");
   });
 }

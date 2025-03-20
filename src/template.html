@@ -8,65 +8,60 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Todo App</h1>
+        <h1 class="logo">Todo App</h1>
       </header>
-      <main>
-        <aside>
-          <div>
-            <button id="create-project-btn">Create Project</button>
-            <div id="create-project-form" class="hidden">
-              <form>
-                <label>
-                  <span>Name:</span>
-                  <input id="project-name-input" type="text" />
-                </label>
-                <button id="project-submit-button">Create</button>
-              </form>
+      <div>
+        <main>
+          <div class="head-buttons">
+            <div class="project-buttons">
+              <button id="create-project-button">Create Project</button>
+            </div>
+            <div class="todo-buttons hidden">
+              <button id="create-todo-button">Create Todo</button>
             </div>
           </div>
           <ul id="project-list"></ul>
-        </aside>
-        <section>
-          <div>
-            <button id="create-todo-btn">Create Todo</button>
-            <div id="create-todo-form" class="hidden">
-              <form>
-                <div>
-                  <div>
-                    <label>
-                      <span>Title:</span>
-                      <input id="todo-title-input" name="title" type="text" />
-                    </label>
-                    <label>
-                      <span>Description:</span>
-                      <textarea
-                        id="todo-desc-input"
-                        name="description"
-                      ></textarea>
-                    </label>
-                  </div>
-                  <div>
-                    <label>
-                      <span>Due:</span>
-                      <input id="todo-due-input" name="due" type="date" />
-                    </label>
-                    <label>
-                      <span>Priority:</span>
-                      <select id="todo-prio-select" name="priority">
-                        <option selected value="regular">Regular</option>
-                        <option value="important">Important</option>
-                        <option value="urgent">Urgent</option>
-                      </select>
-                    </label>
-                  </div>
-                </div>
-                <button id="todo-submit-button">Create</button>
-              </form>
-            </div>
-          </div>
           <ul id="todo-list"></ul>
-        </section>
-      </main>
+          <div id="create-project-form" class="hidden">
+            <form>
+              <div>
+                <label for="project-name-input">Project Name:</label>
+                <input type="text" id="project-name-input" />
+              </div>
+              <div>
+                <label for="project-color-input">Project Name:</label>
+                <input type="color" id="project-color-input" />
+              </div>
+              <button id="project-submit-button">Create</button>
+            </form>
+          </div>
+          <div id="create-todo-form" class="hidden">
+            <form>
+              <div>
+                <label for="todo-name-input">Project Name:</label>
+                <input type="text" id="todo-name-input" />
+              </div>
+              <div>
+                <label for="todo-desc-input">Project Name:</label>
+                <textarea id="todo-desc-input"></textarea>
+              </div>
+              <div>
+                <label for="todo-due-input">Project Name:</label>
+                <input type="date" id="todo-due-input" />
+              </div>
+              <div>
+                <label for="todo-prio-select">Project Name:</label>
+                <select id="todo-prio-select">
+                  <option value="normal">Normal</option>
+                  <option value="important">Important</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+              <button id="todo-submit-button">Create</button>
+            </form>
+          </div>
+        </main>
+      </div>
     </div>
   </body>
 </html>

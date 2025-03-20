@@ -17,9 +17,14 @@ export default function projectList() {
         dataset: {
           id: proj.id,
         },
-        innerText: proj.name,
-        className: `project ${proj.active ? "active" : ""}`,
+        className: `project ${proj.active ? "active" : ""} ${proj.id === 0 ? "project-zero" : ""}`,
       });
+      const name = UI.create("h2", {
+        innerText: proj.name,
+        className: "title",
+      });
+
+      list.append(name);
 
       list.addEventListener("click", () => {
         LIBRARY.setActiveProject(proj.id);

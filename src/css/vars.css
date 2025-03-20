@@ -1,11 +1,14 @@
 :root {
-  --clr-bg-primary: #f6f5f5;
-  --clr-bg-secondary: #0c359e;
-  --clr-bg-accent: #9dd3cc;
+  --clr-bg-primary: #fefefe;
+  --clr-bg-secondary: #adb2d4;
+  --clr-bg-accent: #d1f8ef;
 
   --clr-txt-light: #f6f5f5;
+  --clr-txt-dark: #333;
 
-  --container-padding: 0.5rem 1rem;
-  --box-shadow: 0 0 2px #999;
+  --container-padding: 1rem;
   --border-radius: 8px;
+
+  --box-shadow: 0 0 2px #999;
+  --box-shadow-float: 3px 3px 1px #777;
 }
