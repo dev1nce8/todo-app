@@ -5,5 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
   </head>
-  <body></body>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Todo App</h1>
+      </header>
+      <main>
+        <aside>
+          <div>
+            <button id="create-project-btn">Create Project</button>
+            <div id="create-project-form" class="hidden">
+              <form>
+                <label>
+                  <span>Name:</span>
+                  <input id="project-name-input" type="text" />
+                </label>
+                <button id="project-submit-button">Create</button>
+              </form>
+            </div>
+          </div>
+          <ul id="project-list"></ul>
+        </aside>
+        <section>
+          <div>
+            <button id="create-todo-btn">Create Todo</button>
+            <div id="create-todo-form" class="hidden">
+              <form>
+                <div>
+                  <div>
+                    <label>
+                      <span>Title:</span>
+                      <input id="todo-title-input" name="title" type="text" />
+                    </label>
+                    <label>
+                      <span>Description:</span>
+                      <textarea
+                        id="todo-desc-input"
+                        name="description"
+                      ></textarea>
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <span>Due:</span>
+                      <input id="todo-due-input" name="due" type="date" />
+                    </label>
+                    <label>
+                      <span>Priority:</span>
+                      <select id="todo-prio-select" name="priority">
+                        <option selected value="regular">Regular</option>
+                        <option value="important">Important</option>
+                        <option value="urgent">Urgent</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+                <button id="todo-submit-button">Create</button>
+              </form>
+            </div>
+          </div>
+          <ul id="todo-list"></ul>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

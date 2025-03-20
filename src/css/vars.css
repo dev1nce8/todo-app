@@ -1,0 +1,11 @@
+:root {
+  --clr-bg-primary: #f6f5f5;
+  --clr-bg-secondary: #0c359e;
+  --clr-bg-accent: #9dd3cc;
+
+  --clr-txt-light: #f6f5f5;
+
+  --container-padding: 0.5rem 1rem;
+  --box-shadow: 0 0 2px #999;
+  --border-radius: 8px;
+}

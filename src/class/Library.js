@@ -1,4 +1,5 @@
 import LS from "../helpers/LS.js";
+import PubSub from "../helpers/PubSub.js";
 import Project from "./Project.js";
 import Todo from "./Todo.js";
 
@@ -6,10 +7,13 @@ const appName = "todo-app";
 
 export default class Library {
   #items;
-  #activeProject;
+  #activeProject = 0;
   constructor() {
     if (!this.#getStorage()) {
-      LS.setItem(appName, { projects: [], todos: [] });
+      LS.setItem(appName, {
+        projects: [{ name: "All", id: 0, todos: [], active: true }],
+        todos: [],
+      });
     }
     this.#items = this.#getStorage(); //return {projects, todos}
     this.#activeProject = null;
@@ -18,6 +22,7 @@ export default class Library {
   get projects() {
     return this.#items.projects;
   }
+
   get todos() {
     return this.#items.todos;
   }
@@ -40,12 +45,30 @@ export default class Library {
       items.projects = items.projects.map((proj) => {
         if (proj.active) {
           proj.todos.push(newTodo.id);
+          if (proj.id !== 0) {
+            items.projects[0].todos.push(newTodo.id);
+          }
           newTodo.project = proj.id;
           items.todos.push(newTodo);
         }
         return proj;
       });
     });
+  }
+
+  getActiveProjectTodo() {
+    let todos = [];
+    this.#updateStorage((items) => {
+      for (let i = 0; i < items.projects.length; i++) {
+        const proj = items.projects[i];
+        if (proj.active) {
+          todos = items.todos.filter((todo) => {
+            return todo.project === proj.id || proj.id === 0;
+          });
+        }
+      }
+    });
+    return todos;
   }
 
   setActiveProject(id) {
