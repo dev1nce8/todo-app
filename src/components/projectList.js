@@ -1,6 +1,6 @@
+import LIBRARY from "../helpers/lib";
 import PubSub, { events } from "../helpers/PubSub";
 import UI from "../class/UI";
-import { LIBRARY } from "..";
 
 export default function projectList() {
   const projectList = document.querySelector("#project-list");

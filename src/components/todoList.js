@@ -1,4 +1,4 @@
-import { LIBRARY } from "..";
+import LIBRARY from "../helpers/lib";
 import UI from "../class/UI";
 import PubSub, { events } from "../helpers/PubSub";
 

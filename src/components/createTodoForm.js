@@ -1,5 +1,4 @@
-import { LIBRARY } from "..";
-import UI from "../class/UI";
+import LIBRARY from "../helpers/lib";
 import PubSub, { events } from "../helpers/PubSub";
 
 export default function createTodoForm() {
