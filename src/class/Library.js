@@ -11,7 +11,7 @@ export default class Library {
   constructor() {
     if (!this.#getStorage()) {
       LS.setItem(appName, {
-        projects: [{ name: "All", id: 0, todos: [] }],
+        projects: [{ name: "All", id: 0, todos: [], active: true }],
         todos: [],
       });
     }
@@ -46,7 +46,7 @@ export default class Library {
         if (proj.active) {
           proj.todos.push(newTodo.id);
           if (proj.id !== 0) {
-            items.projects[0].push(newTodo.id);
+            items.projects[0].todos.push(newTodo.id);
           }
           newTodo.project = proj.id;
           items.todos.push(newTodo);

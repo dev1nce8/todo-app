@@ -14,3 +14,8 @@ export default class PubSub {
     });
   }
 }
+
+export const events = {
+  projectUpdate: "project-update",
+  todoUpdate: "project-update",
+};

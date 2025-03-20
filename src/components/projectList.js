@@ -1,4 +1,4 @@
-import PubSub from "../helpers/PubSub";
+import PubSub, { events } from "../helpers/PubSub";
 import UI from "../class/UI";
 import { LIBRARY } from "..";
 
@@ -7,7 +7,7 @@ export default function projectList() {
 
   UI.render(projectList, renderProjects);
 
-  PubSub.subscribe("project-update", () => {
+  PubSub.subscribe(events.projectUpdate, () => {
     UI.render(projectList, renderProjects);
   });
 
@@ -23,8 +23,7 @@ export default function projectList() {
 
       list.addEventListener("click", () => {
         LIBRARY.setActiveProject(proj.id);
-        PubSub.publish("project-update");
-        PubSub.publish("todo-update");
+        PubSub.publish(events.projectUpdate);
       });
       return list;
     });
