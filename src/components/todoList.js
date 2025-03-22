@@ -3,7 +3,7 @@ import UI from "../class/UI";
 import PubSub, { events } from "../helpers/PubSub";
 
 export default function todoList() {
-  const todoList = document.querySelector("#todo-list");
+  const todoList = document.querySelector("#project-view-todo-list");
   renderTodo(); // intially renders todo on first visit
 
   PubSub.subscribe(events.todoUpdate, renderTodo);

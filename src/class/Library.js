@@ -7,7 +7,6 @@ const appName = "todo-app";
 
 export default class Library {
   #items;
-  #activeProject = 0;
   constructor() {
     if (!this.#getStorage()) {
       LS.setItem(appName, {
@@ -16,7 +15,6 @@ export default class Library {
       });
     }
     this.#items = this.#getStorage(); //return {projects, todos}
-    this.#activeProject = null;
   }
 
   get projects() {
@@ -27,9 +25,9 @@ export default class Library {
     return this.#items.todos;
   }
 
-  createProject(name) {
+  createProject(name, descrption) {
     this.#updateStorage((items) => {
-      items.projects.push(new Project(name));
+      items.projects.push(new Project(name, descrption));
     });
   }
 
@@ -56,19 +54,31 @@ export default class Library {
     });
   }
 
-  getActiveProjectTodo() {
-    let todos = [];
+  getActiveProject() {
+    let project = null;
     this.#updateStorage((items) => {
-      for (let i = 0; i < items.projects.length; i++) {
-        const proj = items.projects[i];
+      const { projects } = items;
+      projects.some((proj) => {
         if (proj.active) {
-          todos = items.todos.filter((todo) => {
-            return todo.project === proj.id || proj.id === 0;
-          });
+          project = proj;
+          return;
         }
-      }
+      });
     });
-    return todos;
+    return project;
+  }
+
+  getActiveProjectTodo() {
+    let todosResult = [];
+    this.#updateStorage((items) => {
+      const { todos } = items;
+      const activeProjectId = this.getActiveProject().id;
+      todosResult = todos.filter((todo) => {
+        // returns todos of the active project or returns all if the active project's id is 0 (the default project)
+        return todo.project === activeProjectId || activeProjectId === 0;
+      });
+    });
+    return todosResult;
   }
 
   setActiveProject(id) {
