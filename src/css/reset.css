@@ -31,10 +31,12 @@ body {
 
 header {
   height: var(--header-height);
+  background-color: var(--clr-secondary);
 }
 
-main {
-  height: calc(100vh - var(--header-height) - 4rem);
+.wrapper > div {
+  height: calc(100vh - var(--header-height));
+  padding: var(--container-padding);
 }
 
 ul,
@@ -45,15 +47,18 @@ ol {
 
 button {
   padding: 0.5em 2em;
-  border: none;
   background-color: var(--clr-bg-accent);
   border-radius: 4px;
-  box-shadow: 0 0 2px #111;
   cursor: pointer;
+  color: var(--clr-txt-dark);
+  box-shadow: var(--box-shadow-float);
+  border: 1px solid #ccc;
 }
 
 input,
 select,
 textarea {
   padding: 0.5em 1em;
+  border: none;
+  box-shadow: var(--box-shadow);
 }

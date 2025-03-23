@@ -1,14 +1,16 @@
 import LIBRARY from "../helpers/lib";
 import PubSub, { events } from "../helpers/PubSub";
 import UI from "../class/UI";
+import projectView from "./projectView";
 
 export default function projectList() {
-  const projectList = document.querySelector("#project-list");
+  const projectListCont = document.querySelector("#project-list");
+  const projectViewCont = document.querySelector("#project-view-cont");
 
-  UI.render(projectList, renderProjects);
+  UI.render(projectListCont, renderProjects);
 
   PubSub.subscribe(events.projectUpdate, () => {
-    UI.render(projectList, renderProjects);
+    UI.render(projectListCont, renderProjects);
   });
 
   function renderProjects() {
@@ -17,14 +19,22 @@ export default function projectList() {
         dataset: {
           id: proj.id,
         },
-        innerText: proj.name,
-        className: `project ${proj.active ? "active" : ""}`,
+        className: `project ${proj.active ? "active" : ""} ${proj.id === 0 ? "project-zero" : ""}`,
       });
+      const name = UI.create("h2", {
+        innerText: proj.name,
+        className: "title",
+      });
+
+      list.append(name);
 
       list.addEventListener("click", () => {
         LIBRARY.setActiveProject(proj.id);
-        PubSub.publish(events.projectUpdate);
+        PubSub.publish(events.todoUpdate);
+        projectView(proj.id);
+        projectViewCont.classList.remove("hidden");
       });
+
       return list;
     });
   }
