@@ -26,13 +26,15 @@ main {
   & #create-todo-form.hidden,
   & #project-list.hidden,
   & #todo-list.hidden,
-  & #project-view-cont.hidden {
+  & #project-view-cont.hidden,
+  & #todo-view.hidden {
     display: none;
   }
 
   & #create-project-form,
   & #project-view-cont,
-  & #create-todo-form {
+  & #create-todo-form,
+  & #todo-view {
     border: 1px solid #ccc;
     width: 100%;
     height: 100%;

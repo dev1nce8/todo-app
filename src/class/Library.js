@@ -1,5 +1,4 @@
 import LS from "../helpers/LS.js";
-import PubSub from "../helpers/PubSub.js";
 import Project from "./Project.js";
 import Todo from "./Todo.js";
 
@@ -50,6 +49,18 @@ export default class Library {
           items.todos.push(newTodo);
         }
         return proj;
+      });
+    });
+  }
+
+  toggleTodoComplete(id) {
+    this.#updateStorage((items) => {
+      const { todos } = items;
+      items.todos = todos.map((todo) => {
+        if (todo.id === id) {
+          todo.isCompleted = !todo.isCompleted;
+        }
+        return todo;
       });
     });
   }

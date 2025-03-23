@@ -1,14 +1,13 @@
 import checkIcon from "../asset/check-icon.svg";
 import UI from "../class/UI";
+import LIBRARY from "../helpers/lib";
+import PubSub, { events } from "../helpers/PubSub";
 
 export default function todoComponent(todo) {
   const container = UI.create("div", {
     className: "info-container",
   });
   const list = UI.create("li", {
-    dataset: {
-      id: todo.id,
-    },
     className: todo.priority,
   });
   const title = UI.create("p", {
@@ -32,6 +31,11 @@ export default function todoComponent(todo) {
 
   container.append(title, due);
   list.append(checkBox, container);
+
+  list.addEventListener("click", () => {
+    LIBRARY.toggleTodoComplete(todo.id);
+    PubSub.publish(events.todoUpdate);
+  });
 
   return list;
 }
