@@ -9,7 +9,9 @@ export default class Library {
   constructor() {
     if (!this.#getStorage()) {
       LS.setItem(appName, {
-        projects: [{ name: "All", id: 0, todos: [], active: true }],
+        projects: [
+          { name: "All", id: 0, todos: [], color: "#f6f6f6", active: true },
+        ],
         todos: [],
       });
     }
@@ -24,9 +26,9 @@ export default class Library {
     return this.#items.todos;
   }
 
-  createProject(name, descrption) {
+  createProject(name, descrption, color) {
     this.#updateStorage((items) => {
-      items.projects.push(new Project(name, descrption));
+      items.projects.push(new Project(name, descrption, color));
     });
   }
 

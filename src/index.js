@@ -12,4 +12,3 @@ todoList();
 createProjectForm();
 createTodoForm();
 
-// TODO: Add checkmarks preview and checkmarks on todos

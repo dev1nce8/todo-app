@@ -5,6 +5,7 @@
 
 .main-header {
   background-color: var(--clr-bg-secondary);
+  color: var(--clr-txt-light);
   display: flex;
   align-items: center;
   padding: var(--container-padding);
@@ -65,6 +66,10 @@ main {
         gap: 1rem;
         padding: var(--container-padding);
         overflow-y: hidden;
+
+        & #project-view-description {
+          padding: var(--container-padding);
+        }
 
         & #project-view-todo-list {
           display: flex;
@@ -144,11 +149,51 @@ main {
       }
     }
   }
-
+  /* CREATE PROJECT FORM */
   & #create-project-form {
     & textarea {
       resize: none;
       height: 8rem;
+    }
+
+    & #project-color-radios {
+      & input[type="radio"] {
+        box-shadow: none;
+      }
+
+      & label {
+        display: flex;
+        gap: 1rem;
+        box-shadow: var(--box-shadow);
+        padding: 0.5em;
+      }
+
+      & .color-radios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        div {
+          width: 24px;
+          height: 24px;
+        }
+        & .color-1 {
+          background-color: var(--clr-opt-1);
+        }
+        & .color-2 {
+          background-color: var(--clr-opt-2);
+        }
+        & .color-3 {
+          background-color: var(--clr-opt-3);
+        }
+        & .color-4 {
+          background-color: var(--clr-opt-4);
+        }
+        & .color-5 {
+          background-color: var(--clr-opt-5);
+        }
+        & .color-6 {
+          background-color: var(--clr-opt-6);
+        }
+      }
     }
   }
 
@@ -158,6 +203,7 @@ main {
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
     background-color: var(--clr-bg-secondary);
+    color: var(--clr-txt-light);
     display: flex;
     align-items: center;
   }

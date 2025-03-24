@@ -51,9 +51,39 @@
                 <label for="project-desc-input">Description:</label>
                 <textarea id="project-desc-input"></textarea>
               </div>
-              <div>
-                <label for="project-color-input">Color:</label>
-                <input type="color" id="project-color-input" />
+              <div id="project-color-radios">
+                <p>Color:</p>
+                <div class="color-radios">
+                  <label>
+                    <input
+                      checked="true"
+                      type="radio"
+                      name="project-color"
+                      value="#f6f6f6"
+                    />
+                    <div class="color-1"></div>
+                  </label>
+                  <label>
+                    <input type="radio" name="project-color" value="#ff6363" />
+                    <div class="color-2"></div>
+                  </label>
+                  <label>
+                    <input type="radio" name="project-color" value="#f6f7c4" />
+                    <div class="color-3"></div>
+                  </label>
+                  <label>
+                    <input type="radio" name="project-color" value="#578fca" />
+                    <div class="color-4"></div>
+                  </label>
+                  <label>
+                    <input type="radio" name="project-color" value="#a1eebd" />
+                    <div class="color-5"></div>
+                  </label>
+                  <label>
+                    <input type="radio" name="project-color" value="#d67bff" />
+                    <div class="color-6"></div>
+                  </label>
+                </div>
               </div>
               <button id="project-submit-button">Create</button>
               <button id="project-close-button" class="btn-red">Close</button>

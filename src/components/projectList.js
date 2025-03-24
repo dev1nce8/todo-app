@@ -19,7 +19,10 @@ export default function projectList() {
         dataset: {
           id: proj.id,
         },
-        className: `project ${proj.active ? "active" : ""} ${proj.id === 0 ? "project-zero" : ""}`,
+        className: `project ${proj.id === 0 ? "project-zero" : ""}`,
+        style: {
+          backgroundColor: proj.color,
+        },
       });
       const name = UI.create("h2", {
         innerText: proj.name,
