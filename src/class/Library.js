@@ -74,6 +74,15 @@ export default class Library {
     });
   }
 
+  getProjectName(id) {
+    let projectName = null;
+    this.#updateStorage((items) => {
+      const { projects } = items;
+      projectName = projects.filter((p) => p.id === id).shift().name;
+    });
+    return projectName;
+  }
+
   getActiveProject() {
     let project = null;
     this.#updateStorage((items) => {

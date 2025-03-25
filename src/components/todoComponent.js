@@ -23,6 +23,10 @@ export default function todoComponent(todo) {
     className: "check-box",
   });
 
+  const projectNameCont = UI.create("div", {
+    className: "project-container",
+  });
+
   const buttonCont = UI.create("div", {
     className: "button-container",
   });
@@ -30,11 +34,6 @@ export default function todoComponent(todo) {
   const deleteButton = UI.create("button", {
     className: "btn delete",
     innerText: "Delete",
-  });
-
-  const editButton = UI.create("button", {
-    className: "btn edit",
-    innerText: "Edit",
   });
 
   list.classList.remove("completed");
@@ -45,15 +44,22 @@ export default function todoComponent(todo) {
     list.classList.add("completed");
   }
 
+  if (LIBRARY.getActiveProject().id === 0) {
+    const projectName = UI.create("p", {
+      innerText: LIBRARY.getProjectName(todo.project),
+      className: "project-name",
+    });
+    projectNameCont.append(projectName);
+  }
   // buttons functionalities
   deleteButton.addEventListener("click", () => {
     LIBRARY.deleteTodo(todo.id);
     PubSub.publish(events.todoUpdate);
   });
 
-  buttonCont.append(editButton, deleteButton);
+  buttonCont.append(deleteButton);
   container.append(title, due);
-  list.append(checkBox, container, buttonCont);
+  list.append(checkBox, container, projectNameCont, buttonCont);
 
   checkBox.addEventListener("click", () => {
     LIBRARY.toggleTodoComplete(todo.id);

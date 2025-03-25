@@ -114,23 +114,29 @@ main {
           /* TODO */
           & li {
             border: 1px solid #ccc;
-            display: flex;
-            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 0.5fr 3fr 1fr 0.5fr;
+            padding: 0.3rem 1rem;
             align-items: center;
             gap: 1rem;
             border-radius: var(--border-radius);
             background-color: var(--clr-bg-todo);
 
             & .info-container {
-              width: 95%;
+              text-align: left;
             }
 
             & .title {
-              font-size: 1.3rem;
+              font-size: 1rem;
             }
 
             & .due {
               color: #777;
+              font-size: 0.7rem;
+            }
+
+            & .project-name {
+              font-size: 0.8rem;
             }
 
             & .check-box {
