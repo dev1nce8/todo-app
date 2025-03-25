@@ -23,16 +23,39 @@ export default function todoComponent(todo) {
     className: "check-box",
   });
 
+  const buttonCont = UI.create("div", {
+    className: "button-container",
+  });
+
+  const deleteButton = UI.create("button", {
+    className: "btn delete",
+    innerText: "Delete",
+  });
+
+  const editButton = UI.create("button", {
+    className: "btn edit",
+    innerText: "Edit",
+  });
+
+  list.classList.remove("completed");
   if (todo.isCompleted) {
     checkBox.innerHTML = `
       <img src=${checkIcon} alt=""/>
     `;
+    list.classList.add("completed");
   }
 
-  container.append(title, due);
-  list.append(checkBox, container);
+  // buttons functionalities
+  deleteButton.addEventListener("click", () => {
+    LIBRARY.deleteTodo(todo.id);
+    PubSub.publish(events.todoUpdate);
+  });
 
-  list.addEventListener("click", () => {
+  buttonCont.append(editButton, deleteButton);
+  container.append(title, due);
+  list.append(checkBox, container, buttonCont);
+
+  checkBox.addEventListener("click", () => {
     LIBRARY.toggleTodoComplete(todo.id);
     PubSub.publish(events.todoUpdate);
   });

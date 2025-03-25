@@ -2,8 +2,13 @@
   --clr-bg-primary: #fefefe;
   --clr-bg-secondary: #3c3d47;
   --clr-bg-accent: #d1f8ef;
+
   --clr-bg-red: #e95c63;
-  --clr-bg-todo: #ecf4f3;
+
+  /* todo-colors */
+  --clr-todo-regular: #faf1e6;
+  --clr-todo-important: #c4d7ff;
+  --clr-todo-urgent: #e9a5f1;
 
   --clr-txt-light: #f6f5f5;
   --clr-txt-dark: #333;

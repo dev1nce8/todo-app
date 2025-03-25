@@ -26,7 +26,6 @@ main {
   & #create-project-form.hidden,
   & #create-todo-form.hidden,
   & #project-list.hidden,
-  & #todo-list.hidden,
   & #project-view-cont.hidden,
   & #todo-view.hidden {
     display: none;
@@ -77,25 +76,50 @@ main {
           gap: 1rem;
           overflow-y: scroll;
 
+          & li.regular {
+            background-color: var(--clr-todo-regular);
+          }
+
+          & li.important {
+            background-color: var(--clr-todo-important);
+          }
+
+          & li.urgent {
+            background-color: var(--clr-todo-urgent);
+          }
+
+          & .btn.delete {
+            pointer-events: none;
+            background-color: #aaa;
+            cursor: unset;
+          }
+
+          & li.completed {
+            background-color: #aaa;
+
+            & .btn.edit {
+              pointer-events: none;
+              background-color: #aaa;
+              cursor: unset;
+            }
+
+            & .btn.delete {
+              pointer-events: visible;
+              background-color: var(--clr-bg-red);
+              color: var(--clr-txt-light);
+              cursor: pointer;
+            }
+          }
+
           /* TODO */
           & li {
             border: 1px solid #ccc;
-            padding: var(--container-padding);
             display: flex;
+            padding: 0 1rem;
             align-items: center;
             gap: 1rem;
             border-radius: var(--border-radius);
             background-color: var(--clr-bg-todo);
-            cursor: pointer;
-            position: relative;
-
-            &:hover::after {
-              content: "";
-              border: 2px solid var(--clr-bg-secondary);
-              position: absolute;
-              inset: 0;
-              border-radius: inherit;
-            }
 
             & .info-container {
               width: 95%;
@@ -110,13 +134,28 @@ main {
             }
 
             & .check-box {
-              border: 1px solid #ccc;
-              width: 3rem;
-              height: 3rem;
+              border: 1px solid #aaa;
+              width: 2.5rem;
+              height: 2rem;
               display: flex;
               justify-content: center;
               align-items: center;
               border-radius: var(--border-radius);
+              position: relative;
+              cursor: pointer;
+
+              &:hover::after {
+                content: "";
+                border: 2px solid var(--clr-bg-secondary);
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+              }
+            }
+
+            & .button-container {
+              display: flex;
+              gap: 1rem;
             }
           }
         }

@@ -67,6 +67,13 @@ export default class Library {
     });
   }
 
+  deleteTodo(id) {
+    this.#updateStorage((items) => {
+      const { todos } = items;
+      items.todos = todos.filter((t) => t.id !== id);
+    });
+  }
+
   getActiveProject() {
     let project = null;
     this.#updateStorage((items) => {
