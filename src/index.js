@@ -1,14 +1,19 @@
-import "./css/vars.css";
-import "./css/reset.css";
-import "./css/style.css";
-import projectList from "./components/projectList.js";
-import todoList from "./components/todoList.js";
-import createProjectForm from "./components/createProjectForm.js";
-import createTodoForm from "./components/createTodoForm.js";
+import createComponent from "./utils/createComponent";
+const root = document.querySelector("#root");
 
-// INIT
-projectList();
-todoList();
-createProjectForm();
-createTodoForm();
+let counter = 0;
+const [h1, renderH1] = createComponent("h1", () => {
+  return [counter];
+});
 
+const [button] = createComponent("button", ({ attr }) => {
+  attr({
+    onclick: () => {
+      counter++;
+      renderH1();
+    },
+  });
+  return ["+1"];
+});
+
+root.append(h1, button);
